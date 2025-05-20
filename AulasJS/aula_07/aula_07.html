@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+    <style>
+        body {
+            background-color: rgb(94, 169, 255);
+            color: white;
+            font: normal 14pt Arial;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Iniciando estudos DOM</h1>
+    <p>Aqui vai o resultado</p>
+    <p>Aprendendo <strong>DOM</strong> em JavaScript <br></p>
+    <div id="msg"> <strong>Clique aqui</strong></div>
+    
+    <!-- Replicando parágrafos e alterando cor de fundo -->
+    <script>
+        
+        // Pegando um elemento(parágrafo) do corpo/body do HTML através do índice
+        var corpo = window.document.body
+        var p1 = window.document.getElementsByTagName('p')[1]
+        var p2 = window.document.getElementsByTagName('p')[1]
+        
+        // Pegando um elementro através do ID e alterando a cor da fonte
+        var identificador = window.document.getElementById('msg')
+        identificador.style.color = 'yellow'
+        
+        // Alterando a cor de fundo do site
+        corpo.style.background = 'black'
+
+        // Replicando os elementos do parágrafo sem negrito e com negrito
+        window.document.write('<br>Pegando parágrafo com negrito: ' + p1.innerHTML)
+        window.document.write('<br>Pegando parágrafo sem negrito: ' +p2.innerText)
+    
+    </script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dev_Eliseu</title>
+</head>
+
+<body>
+    <h1>ELISEU RODRIGUES PEREIRA</h1>    
+    <input id="nome" placeholder="Digite seu nome..."/>
+    <button id="btn">Enviar</button>
+    <p id="resultado"></p>
+    
+    <script>
+        const btn = document.querySelector('#btn');
+        const nome = document.querySelector('#nome');
+        const resultado = document.querySelector('#resultado');
+
+        btn.addEventListener('click', ()=> {
+            resultado.innerText = `Olá!, ${nome.value}!`;
+        });
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagens</title>
+</head>
+<body>
+    <h1>Imagens Dinamicas</h1>
+    <p>Abra em dispositivos de diversos tamanhos.</p>
+
+    <picture>
+        <source media="(max-width: 750px)" srcset="imagens/photo_pequena.png" type="image/png">
+        <source media="(max-width: 1050px)" 
+        srcset="imagens/photo_media.png" type="image/png">
+        
+        <img src="imagens/photo_grande.png" alt="Imagem Flexivel">
+    </picture>
+
+    <h1>Reprodutor de áudio</h1>
+    <p>Clique no ícone de "play" para tocar música</p>
+    <audio preload="metadata" controls loop>
+        <source src="som/A Distant Call - Dan _Lebo_ Lebowitz, Tone Seeker (1).mp3" type="audio/mp3">
+        <p>Não está conseguindo reproduzir? <a href="som/A Distant Call - Dan _Lebo_ Lebowitz, Tone Seeker (1).mp3">Clique aqui para fazer Download.</a></p>
+    </audio>
+     
+</body>
+</html>
