@@ -3,6 +3,7 @@ from datetime import *
 print('=== DATA ===\n')
 data_digitada = date(2001, 5, 3)    # Exibe dia, mês e ano informado
 print('Data digitada:', data_digitada)
+
 data_atual = date.today()     # Exibe dia, mês e ano atual
 print('Data atual:', data_atual)
 
