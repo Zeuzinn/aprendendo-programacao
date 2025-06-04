@@ -1,15 +1,9 @@
-# os.listdir para navegar em caminhos
-# /Users/luizotavio/Desktop/EXEMPLO
-# C:\Users\luizotavio\Desktop\EXEMPLO
-# caminho = r'C:\\Users\\luizotavio\\Desktop\\EXEMPLO'
 import os
 
-# Caminho correto — você é o usuário "Elise"
-caminho = r'C:\Users\Elise\cod python\praticas-com-python'
+# Montando o caminho com join (boa prática para compatibilidade entre sistemas)
+caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python', 'atividades_Udemy')
 
-
-
-# Verifica se o caminho existe antes de listar
+# Verifica se o caminho existe
 if not os.path.exists(caminho):
     print(f"❌ Caminho não encontrado: {caminho}")
 else:
