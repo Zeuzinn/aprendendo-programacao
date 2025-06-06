@@ -8,7 +8,6 @@ class Notificacao(ABC):
     @abstractmethod
     def enviar(self) -> bool:...   
     # 'bool' indica que o método deve retornar um booleano 'True' ou 'False' 
-    # O método 'enviar' é abstrato. 
     # Toda subclasse é obrigada a implementar esse método.
     
 
