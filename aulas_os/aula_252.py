@@ -1,35 +1,23 @@
-# os.walk
-# é uma função que permite percorrer uma estrutura de diretórios 
-# de maneira recursiva. Ele gera uma sequência de tupla, onde cada tupla possui
-# três elementos: 
-# diretório atual(root)
-# subdiretórios(dirs)
-# arquivos do diretório atual(files).
-
 import os
 from itertools import count
 
-
-caminho = os.path.join('C:\\Users', 'Elise', 'Meu Python', 'praticas-com-python', 'praticas_poo')
+caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python', 'praticas_poo')
 counter = count()
 
-    # Exibe o caminho completo das pastas 
 for root, dirs, files in os.walk(caminho):
     the_counter = next(counter)
-    print(the_counter, '📁 PASTA ATUAL:', root)
-    
+    print(f"{the_counter} 📁 PASTA ATUAL: {root}")
 
-    # Exibe as pastas dentro de outra pasta
-<<<<<<< HEAD:atividades_Udemy/aula_252.py
-    for dir_ in dirs:
-        print('     📁 ', the_counter,'Praticas_poo - Dir:', dirs)
-=======
-    #for dir_ in dirs:
-    print('     📁 ', the_counter,'Dir:', dirs)
->>>>>>> 277258debeb7606387c86bb159ca340454cca055:aulas_os/aula_252.py
+    # Exibe as pastas dentro da pasta atual, uma por linha
+    if dirs:
+        print(f"     📁 {the_counter} Dir(s):")
+        for dir_ in dirs:
+            print(f"         📁 - {dir_}")
 
-    # Exibe os Arquivos dentro das pastas  
-    for f in files:
-        print('     📄 ', the_counter,'Files:', files)
-    
-    
+    # Exibe os arquivos dentro da pasta atual, um por linha
+    if files:
+        print(f"     📄 {the_counter} File(s):")
+        for f in files:
+            print(f"        📄 - {f}")
+
+    print()

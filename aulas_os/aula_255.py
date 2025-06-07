@@ -3,7 +3,7 @@ import os
 from itertools import count
 
 
-caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python', 'praticas_poo')
+caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python')
 counter = count()
 
 def formatar_tamanho(tamanho_em_bytes: int, base: int = 1000) -> str:

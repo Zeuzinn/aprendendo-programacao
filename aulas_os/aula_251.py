@@ -1,18 +1,21 @@
 import os
 
-# Montando o caminho com join (boa prática para compatibilidade entre sistemas)
-caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python', 'atividades_Udemy')
+# Define o caminho da pasta que será explorada, de forma compatível com qualquer sistema operacional
+caminho = os.path.join('C:\\Users', 'Elise', 'cod python', 'praticas-com-python', 'aulas_csv')
 
-# Verifica se o caminho existe
 if not os.path.exists(caminho):
     print(f"❌ Caminho não encontrado: {caminho}")
 else:
-    for pasta in os.listdir(caminho):
-        caminho_completo_pasta = os.path.join(caminho, pasta)
-        print(f'📁 {pasta}')
+     # Percorre todos os itens (arquivos e pastas) dentro do caminho
+    for item in os.listdir(caminho):
+        caminho_item = os.path.join(caminho, item)
 
-        if not os.path.isdir(caminho_completo_pasta):
-            continue
+        # Verifica se o item é uma pasta
+        if os.path.isdir(caminho_item):
+            print(f'📁 {item}')
 
-        for arquivo in os.listdir(caminho_completo_pasta):
-            print('   📄', arquivo)
+            # Percorre os arquivos dentro da subpasta
+            for subarquivo in os.listdir(caminho_item):
+                print(f'   📄 {subarquivo}')    # Exibe os arquivos contidos dentro da pasta
+        else:
+            print(f'📄 {item}')    # Exibe o nome de arquivos diretamente dentro da pasta principal
