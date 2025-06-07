@@ -16,12 +16,17 @@ counter = count()
     # Exibe o caminho completo das pastas 
 for root, dirs, files in os.walk(caminho):
     the_counter = next(counter)
-    print(the_counter, '📁 - PRÁTICAS-COM-PYTHON - \nPASTA ATUAL:', root)
+    print(the_counter, '📁 PASTA ATUAL:', root)
     
 
     # Exibe as pastas dentro de outra pasta
+<<<<<<< HEAD:atividades_Udemy/aula_252.py
     for dir_ in dirs:
         print('     📁 ', the_counter,'Praticas_poo - Dir:', dirs)
+=======
+    #for dir_ in dirs:
+    print('     📁 ', the_counter,'Dir:', dirs)
+>>>>>>> 277258debeb7606387c86bb159ca340454cca055:aulas_os/aula_252.py
 
     # Exibe os Arquivos dentro das pastas  
     for f in files:
