@@ -13,6 +13,17 @@
 # - Marcar tarefas como concluídas
 # - Mostrar a data e hora de criação da tarefa
 import json
+from datetime import datetime
+from colorama import Fore, init, Style
+
+init(autoreset=True)
+
+def title_colors():
+    a_up, m_medium, b_fall = \
+            Fore.LIGHTGREEN_EX + "[A] - ALTA",\
+            Fore.LIGHTYELLOW_EX + "[M] - MÉDIA",\
+            Fore.LIGHTRED_EX + "[B] - BAIXA"
+    return a_up, m_medium, b_fall
 
 
 def add_work(JOBS:list):
@@ -20,18 +31,24 @@ def add_work(JOBS:list):
     description = input('Descrição: ').lower()
     
     priority = priorities()
-
-    JOBS.append({'job': job, 'description': description, 'priority': priority})
+    date, time = date_time()
+    
+    JOBS.append({'job': job, 'description': description, 'priority': priority, 'date': date, 'time': time})
 
 
 def priorities():
     while True:
-        print('='*35)
-        print('Prioridades')
-        print('='*35)
-        print('[A] - ALTA | [M] - MÉDIA | [B] - BAIXA')
+        print(Fore.LIGHTBLUE_EX + '='*35)
+        print(Style.BRIGHT + 'Prioridades')
+        print(Fore.LIGHTBLUE_EX + '='*35)
         
-        option = input('Informe a prioridade(ex: A): ').upper()
+        a_up, m_medium, b_fall = title_colors()
+
+        print(f'{a_up} | {m_medium} | {b_fall}')
+        
+        option = input('Informe o nível de prioridade(ex: A): ').upper()
+        print()
+
         if option == "A":
             return "Alta"
         elif option == "M":
@@ -39,7 +56,13 @@ def priorities():
         elif option == "B":
             return "Baixa"
         else:
-            print('Erro! Informe uma prioridade válida.')
+            print(Fore.LIGHTRED_EX + 'Erro! Informe uma prioridade válida.')
+
+
+def date_time():
+    date = datetime.now()
+    time = datetime.now()
+    return date.strftime("%d/%m/%Y"), time.strftime('%H:%M')
 
 
 def job_list(JOBS: list):
@@ -55,15 +78,16 @@ def filter_list(priority):
     filters_ = [t for t in JOBS if t['priority'] == priority]
 
     if not filters_:
-        print(f"\nNENHUMA TAREFA DE PRIORIDADE {priority.upper()}.\n")
+        print(Fore.LIGHTYELLOW_EX + f"\nNENHUMA TAREFA DE PRIORIDADE {priority.upper()}.\n")
         return
     else:
         print(f"\n==== TAREFAS DE PRIORIDADE {priority.upper()} ====\n")
         for i, t in enumerate(filters_, 1):
             print(f"[{i}] Tarefa: {t['job']}")
             print(f"Descrição: {t['description']}")
-            print(f"Prioridade: {t['priority']}\n")
-                
+            print(f"Prioridade: {t['priority']}")
+            print(f"Criada: {t['date']} - {t['time']}\n")    
+
 
 def remove_job(JOBS: list):
     priority = priorities()
@@ -75,11 +99,11 @@ def remove_job(JOBS: list):
         if 1 <= job_delete <= len(filters_priority):
             job_remove = filters_priority[job_delete - 1]
             JOBS.remove(job_remove)
-            print("Tarefa removida com sucesso!\n")
+            print(Fore.LIGHTGREEN_EX + "Tarefa removida com sucesso!\n")
         else:
             print("Índice fora do intervalo.\n")
     except ValueError:
-        print("ERRO: índice deve ser um número válido.\n")
+        print(Fore.LIGHTRED_EX + "ERRO: índice deve ser um número válido.\n")
 
 
 def filter_indice_jobs(priority):
@@ -94,31 +118,33 @@ def filter_indice_jobs(priority):
     return filters_priority
 
 
-def save_jbos(JOBS):
-    with open(path_jobs, 'w') as file_:
+def save_jobs(JOBS):
+    with open(PATH_JOBS, 'w') as file_:
         json.dump(JOBS, file_ , indent= 4)
 
 
 def loading_jobs():
     try:
-        with open(path_jobs, 'r') as file_:
+        with open(PATH_JOBS, 'r') as file_:
             return json.load(file_)
     except FileNotFoundError:
         return []
 
-path_jobs = 'JOBS.json'
+
+PATH_JOBS = 'JOBS.json'
 JOBS = loading_jobs()
 while True:
-    print('[1] - Adicionar Tarefa | [2] - Listar Tarefas | [3] - Remover tarefa')
+    print(Style.BRIGHT + '[1] - Adicionar Tarefa | [2] - Listar Tarefas | [3] - Remover tarefa')
     option = input("Escolha: ")
+    print('')
 
     if option == '1':
         add_work(JOBS)
-        save_jbos(JOBS)
+        save_jobs(JOBS)
     elif option == '2':
         job_list(JOBS)
     elif option == '3':
         remove_job(JOBS)
-        save_jbos(JOBS)
+        save_jobs(JOBS)
     else:
-        print('OPÇÃO ERRADA')
+        print(Fore.LIGHTRED_EX + 'OPÇÃO ERRADA')
