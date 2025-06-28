@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo em Flask</title>
+</head>
+<body>
+    <form action="/" method="post">
+        <h2>Jogo do Número Secreto</h2>
+        <p>Adivinhe o número escondido entre 1 e 10.</p>
+        <label for="number">Digite um número</label>
+        <input type="text" name="number" id="number" placeholder="Digite um número...">
+        <button type="submit">Enviar</button>
+    </form>
+
+    {% if mensagem %}
+        <p>{{ mensagem }}</p>
+    {% endif %}
+
+    <p>Tentativas: {{ attempt }}</p>
+</body>
+</html>

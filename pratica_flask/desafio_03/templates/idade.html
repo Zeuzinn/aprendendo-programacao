@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Idade</title>
+</head>
+<body>
+    <form action="/" method="POST">
+        <label for="age">Digite seu ano de nascimento:</label>
+        <input type="text" name="age" id="age" placeholder="Ano de nascimento...">
+        <button type="submit">Calcular</button>
+    </form>
+
+    {% if result %}
+        <p>Resultado: {{ result }}</p>
+    {% endif %}
+
+    {% if error %}
+        <p style="color:red">{{ error }}</p>
+    {% endif %}
+
+</body>
+</html>
