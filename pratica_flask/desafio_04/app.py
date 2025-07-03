@@ -9,7 +9,7 @@ app.secret_key = 'santos12'
 def number_secrets():
     # Inicializa se não existir ainda
     if 'number_secret' not in session:
-        session['number_secret'] = random.randint(1, 10)
+        session['number_secret'] = random.randint(1, 100)
         session['attempt'] = 0
 
     msg = None
@@ -23,7 +23,7 @@ def number_secrets():
             if number == session['number_secret']:
                 msg = f"Parabéns! Você acertou o número secreto ({session['number_secret']}) em {session['attempt']} tentativas."
                 # Reinicia o jogo
-                session['number_secret'] = random.randint(1, 10)
+                session['number_secret'] = random.randint(1, 100)
                 session['attempt'] = 0
 
             elif number < session['number_secret']:

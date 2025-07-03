@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conversor de Temperatura</title>
+</head>
+<body>
+    <h1>Conversor de temperatura</h1>
+    <form action="/" method="post">
+        <input type="text" name="graus" placeholder="Digite a temperatura">
+        <select name="tipo">
+            <option value="C">Celsius para Fahrenheit</option>
+            <option value="F">Fahrenheit para Celsius</option>
+        </select>
+        <button type="submit">Converter</button>
+    </form>
+    {% if result %}
+        <p><strong>Resultado:</strong>{{ result }}</p>
+    {% endif %}
+    {% if msg %}
+        <p style="color: red;"><strong>{{ msg }}</strong></p>
+    {% endif %}
+
+</body>
+</html>
